@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: angular-dashboard
+  namespace: angular
+  labels:
+    app: angular-dashboard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: angular-dashboard
+  template:
+    metadata:
+      labels:
+        app: angular-dashboard
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - name: angular-dashboard
+          image: kalyanidocker/angular13aug:1.0.0
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 250m
+              memory: 256Mi

@@ -1,0 +1,14 @@
+resources:
+  - ../../base
+
+patches:
+  - target:
+      kind: Deployment
+      name: angular-dashboard
+    patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 3
+      - op: replace
+        path: /spec/template/spec/containers/0/image
+        value: kalyanidocker/angularapp:1.0.0
