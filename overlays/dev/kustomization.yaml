@@ -4,6 +4,7 @@ metadata:
   name: angular-dev
 resources:
 - ../../base
+- ingress.yaml
 
 patches:
   - target:
@@ -33,11 +34,5 @@ patches:
       - op: replace
         path: /metadata/namespace
         value: angular-dev
-  - target:
-      kind: Ingress
-      name: angular-dashboard-ingress
-    patch: |-
-      - op: add
-        path: /metadata/namespace
-        value: angular-dev
+
 
