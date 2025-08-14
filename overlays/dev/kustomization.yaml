@@ -37,7 +37,7 @@ patches:
       kind: Ingress
       name: angular-dashboard-ingress
     patch: |-
-      - op: replace
+      - op: add
         path: /metadata/namespace
         value: angular-dev
 
