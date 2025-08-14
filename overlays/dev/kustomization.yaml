@@ -3,6 +3,5 @@ kind: Kustomization
 metadata:
   name: angular-dev
 resources:
-- ../../base
 - angular-dev.yaml
 
