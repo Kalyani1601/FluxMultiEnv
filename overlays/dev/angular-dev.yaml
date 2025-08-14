@@ -3,6 +3,13 @@ resources:
 
 patches:
   - target:
+      kind: Namespace
+      name: angular
+    patch: |-
+      - op: replace
+        path: /spec/metadata/namespace
+        value: angular-dev
+  - target:
       kind: Deployment
       name: angular-dashboard
     patch: |-
@@ -10,5 +17,29 @@ patches:
         path: /spec/replicas
         value: 3
       - op: replace
+        path: /spec/metadata/namespace
+        value: angular-dev
+      - op: replace
         path: /spec/template/spec/containers/0/image
         value: kalyanidocker/angularapp:1.0.0
+  - target:
+      kind: Kustomization
+      name: angular
+    patch: |-
+      - op: add
+        path: /metadata/namespace
+        value: angular-dev
+  - target:
+      kind: Service
+      name: angular-dashboard-service
+    patch: |-
+      - op: replace
+        path: /metadata/namespace
+        value: angular-dev
+  - target:
+      kind: Ingress
+      name: angular-dashboard-ingress
+    patch: |-
+      - op: replace
+        path: /metadata/namespace
+        value: angular-dev
