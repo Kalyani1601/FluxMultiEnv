@@ -7,13 +7,6 @@ resources:
 
 patches:
   - target:
-      kind: Namespace
-      name: angular
-    patch: |-
-      - op: replace
-        path: /spec/metadata/namespace
-        value: angular-dev
-  - target:
       kind: Deployment
       name: angular-dashboard
     patch: |-
