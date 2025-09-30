@@ -1,5 +1,5 @@
-export GIT_USER=""
-export GIT_PASSWORD=""
+export GIT_USER="<replace withactual git user>"
+export GIT_PASSWORD="<replace with original PAT token>"
 echo "Create ns angular-multienv"
 kubectl create ns angular-multienv
 
