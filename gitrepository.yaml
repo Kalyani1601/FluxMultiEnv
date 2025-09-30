@@ -1,10 +1,4 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: angular-multienv
-  labels:
-    name: angular-dashboard
----
+
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
@@ -16,33 +10,5 @@ spec:
   ref:
     branch: main
   timeout: 60s
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: angular-demo-dev
-  namespace: angular-multienv
-spec:
-  interval: 1m
-  path: ./overlays/dev
-  prune: true
-  sourceRef:
-    kind: GitRepository
-    name: angular-demo-repo
-  targetNamespace: angular-dev
----
-
-# FOr QA env 
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: angular-demo-qa
-  namespace: angular-multienv
-spec:
-  interval: 1m
-  path: ./overlays/qa
-  prune: true
-  sourceRef:
-    kind: GitRepository
-    name: angular-demo-repo
-  targetNamespace: angular-qa
+  secretRef:
+    name: git-credentials
