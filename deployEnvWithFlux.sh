@@ -12,7 +12,7 @@ kubectl create secret generic  git-credentials --from-literal=username="$GIT_USE
 echo "Applying git repository"
 kubectl apply -f gitrepository.yaml
 echo "==============================="
-echo "Select the env to deploy"
+echo "Select the env to deploy: available options dev, qa, prod"
 read env
 echo "Environment entered : $env"
 if [[ "$env" == "dev" ]]; then
