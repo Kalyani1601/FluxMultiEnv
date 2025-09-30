@@ -2,12 +2,12 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: angular-dashboard-ingress
-  namespace: angular-dev
+  namespace: angular-prod
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-    - host: angular.local1
+    - host: angular.local3
       http:
         paths:
           - path: /
